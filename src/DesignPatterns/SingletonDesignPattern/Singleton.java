@@ -10,12 +10,12 @@ public class Singleton {
     }
 
     public static Singleton getInstance(String value) {
-        if(instance != null ){
-            return instance;
-        }
-        else{ // Making it thread safe.
+        // double-checked locking design pattern
+        if(instance == null) {
             synchronized (Singleton.class){
-                instance = new Singleton(value);
+                if(instance == null) {
+                    instance = new Singleton(value);
+                }
             }
         }
         return instance;

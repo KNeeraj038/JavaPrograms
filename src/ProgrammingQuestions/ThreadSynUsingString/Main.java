@@ -19,7 +19,7 @@ public class Main {
             }
         });
         Thread thread2 = new Thread(new Runnable(){
-            String lock = "abc";    // Trying changing this values.
+            String lock = "abc";    // Trying changing this values to see different results.
 
             @Override
             public void run() {
