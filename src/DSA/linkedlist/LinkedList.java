@@ -47,17 +47,42 @@ public class LinkedList {
         printLinkedList(rootNode);
 
         // At a specific position.
-
-        System.out.println("\nInserting data at index 3.");
+        insertAtIndex(rootNode,100, 3);
+        System.out.println("\nInserting [100] at index 3.");
         printLinkedList(rootNode);
 
         // At the end of the linked list.
+        inserNodeAtEnd(rootNode,500);
         System.out.println("\nInserting data at last.");
         printLinkedList(rootNode);
+    }
 
-        System.out.println("\nAfter Inserting data at front.");
-        printLinkedList(rootNode);
+    private static void inserNodeAtEnd(Node rootNode, int data) {
+        Node tempNode = rootNode;
+        while(tempNode.nextNode != null){
+            tempNode = tempNode.nextNode;
+        }
 
+        Node newNode =  new Node(data);
+        tempNode.nextNode =newNode;
+        newNode.nextNode = null;
+    }
+
+    private static Node insertAtIndex(Node rootNode, int data, int index) {
+        Node tempNode = rootNode;
+        int indexCountDown = index;
+        while(indexCountDown != 1){
+            tempNode = tempNode.nextNode;
+            indexCountDown--;
+        }
+        if(tempNode == null){
+            return rootNode;
+        }
+
+        Node newNode = new Node(data);
+        newNode.nextNode = tempNode.nextNode;
+        tempNode.nextNode = newNode;
+        return tempNode;
     }
 
     private static Node insertNodeAfterGivenNode(Node rootNode, int key, int newdata) {
